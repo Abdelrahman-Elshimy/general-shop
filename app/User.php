@@ -36,4 +36,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    // user has many orders
+    public function orders() {
+      return $this->hasMany(Order::class);
+    }
+    // user has many payments
+    public function payments() {
+      return $this->hasMany(Payment::class);
+    }
+    // user has many shipments
+    public function shipments() {
+      return $this->hasMany(Shipment::class);
+    }
+    // user has many shippingAddress
+    public function shippingAddress() {
+      return $this->hasMany(Address::class, 'id', 'shipping_address');
+    }
+    // user has one billingAddress
+    public function billingAddress() {
+      return $this->hasOne(Address::class, 'id', 'billing_address');
+    }
 }

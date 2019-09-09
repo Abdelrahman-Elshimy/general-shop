@@ -1,5 +1,5 @@
 <?php
-
+use App\Product;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('products', function(){
+  return Product::with(['images'])->paginate(20);
+});
 
 Route::get('/', function () {
     return view('welcome');

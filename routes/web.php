@@ -1,5 +1,5 @@
 <?php
-use App\Product;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,10 +11,19 @@ use App\Product;
 |
 */
 
-Route::get('products', function(){
-  return Product::with(['images'])->paginate(20);
-});
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+// Route::get('getunits', 'DataimportController@importData');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('test_email', function() {
+  return 'Hello';
+})->middleware(['auth', 'email_verified']);

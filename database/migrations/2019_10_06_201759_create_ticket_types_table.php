@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContactSupportsTable extends Migration
+class CreateTicketTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateContactSupportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contact_supports', function (Blueprint $table) {
+        Schema::create('ticket_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->text('message');
-            $table->bigInteger('support_type_id');
-            $table->bigInteger('user_id');
-            $table->bigInteger('order_id');
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateContactSupportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_supports');
+        Schema::dropIfExists('ticket_types');
     }
 }

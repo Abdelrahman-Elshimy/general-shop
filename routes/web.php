@@ -17,24 +17,16 @@ use App\Product;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('products', function () {
-    return Product::paginate(10);
-});
-
-
-
-
-// Route::get('getunits', 'DataimportController@importData');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('test_email', function() {
-  return 'Hello';
-})->middleware(['auth', 'user_is_support']);
+// admin routes
 
-Route::get('test-role', function() {
-  $user = User::find(501);
-  return $user->roles;
+Route::group(['auht', 'user_is_admin'], function() {
+
+  // units routes
+  Route::get('units', 'UnitController@index')->name('units');
+  Route::get('add-unit', 'UnitController@showAdd')->name('new-unit');
 });

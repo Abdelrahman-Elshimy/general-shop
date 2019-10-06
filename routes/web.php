@@ -1,5 +1,7 @@
 <?php
 
+use App\User;
+use App\Product;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +17,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('products', function () {
+    return Product::paginate(10);
+});
+
 
 
 
@@ -26,4 +32,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('test_email', function() {
   return 'Hello';
-})->middleware(['auth', 'email_verified']);
+})->middleware(['auth', 'user_is_support']);
+
+Route::get('test-role', function() {
+  $user = User::find(501);
+  return $user->roles;
+});

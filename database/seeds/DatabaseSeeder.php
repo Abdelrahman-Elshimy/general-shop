@@ -6,7 +6,7 @@ use App\Address;
 use App\Product;
 use App\Image;
 use App\Review;
-use App\Category;
+use App\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         // factory(Product::class, 1500)->create();
         // factory(Image::class, 3500)->create();
         // factory(Review::class, 3500)->create();
-        // factory(Category::class, 20)->create();
+        // factory(Role::class, 100)->create();
 
     }
 }
